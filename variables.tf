@@ -38,18 +38,6 @@ variable "subnetwork" {
   description = "https://www.terraform.io/docs/providers/google/r/container_cluster.html#subnetwork"
 }
 
-variable "cluster_secondary_range_name" {
-  description = "Only set for Shared VPC clusters. https://www.terraform.io/docs/providers/google/r/container_cluster.html#cluster_secondary_range_name"
-  # default to not Shared VPC
-  default = ""
-}
-
-variable "services_secondary_range_name" {
-  description = "Only set for Shared VPC clusters. https://www.terraform.io/docs/providers/google/r/container_cluster.html#services_ipv4_cidr_block"
-  # default to not Shared VPC
-  default = ""
-}
-
 variable "initial_node_count" {
   default = 3
 }

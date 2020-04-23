@@ -31,11 +31,6 @@ resource "google_container_cluster" "kubeflow_cluster" {
   remove_default_node_pool = true
   initial_node_count       = "1"
 
-  ip_allocation_policy {
-    cluster_secondary_range_name  = "${var.cluster_secondary_range_name}"
-    services_secondary_range_name = "${var.services_secondary_range_name}"
-  }
-
   resource_labels = {
     "application" = "kubeflow"
     "env"         = "${var.env_label}"
