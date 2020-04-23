@@ -22,7 +22,8 @@ resource "google_container_cluster" "kubeflow_cluster" {
 
   min_master_version = "${var.min_master_version}"
 
-  network = "${var.network}"
+  network    = "${var.network}"
+  subnetwork = "${var.subnetwork}"
 
   # https://www.terraform.io/docs/providers/google/r/container_cluster.html
   # recommends managing the node pool as a separate resource, which we do
@@ -31,8 +32,8 @@ resource "google_container_cluster" "kubeflow_cluster" {
   initial_node_count       = "1"
 
   ip_allocation_policy {
-    cluster_ipv4_cidr_block  = var.cluster_ipv4_cidr_block
-    services_ipv4_cidr_block = var.services_ipv4_cidr_block
+    cluster_secondary_range_name  = "${var.cluster_secondary_range_name}"
+    services_secondary_range_name = "${var.services_secondary_range_name}"
   }
 
   resource_labels = {
